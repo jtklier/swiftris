@@ -44,6 +44,7 @@ class Swiftris {
     
     var score = 0
     var level = 1
+    var highscore = 0
     
     init() {
         fallingShape = nil
@@ -113,6 +114,7 @@ class Swiftris {
     }
     
     func endGame() {
+        highscore = max(highscore, score)
         score = 0
         level = 1
         delegate?.gameDidEnd(swiftris: self)

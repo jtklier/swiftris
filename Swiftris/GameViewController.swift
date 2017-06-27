@@ -17,6 +17,8 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var highScoreLabel: UILabel!
+    
     var panPointReference:CGPoint?
     
     override func viewDidLoad() {
@@ -125,6 +127,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         
         levelLabel.text = "\(swiftris.level)"
         scoreLabel.text = "\(swiftris.score)"
+        highScoreLabel.text = "\(swiftris.highscore)"
         scene.tickLengthMillis = TickLengthLevelOne
         
         // The following is false when restarting a new game
@@ -138,6 +141,8 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     }
     
     func gameDidEnd(swiftris: Swiftris) {
+        highScoreLabel.text = "\(swiftris.highscore)"
+
         view.isUserInteractionEnabled = false
         scene.stopTicking()
         
