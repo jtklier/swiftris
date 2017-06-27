@@ -5,7 +5,7 @@
 //  Created by Jeffrey Klier on 6/26/17.
 //  Copyright © 2017 Bloc. All rights reserved.
 //
-
+import Foundation
 
 let NumColumns = 10
 let NumRows = 20
@@ -46,10 +46,19 @@ class Swiftris {
     var level = 1
     var highscore = 0
     
+    //get stored high score data
+    let defaults = UserDefaults.standard
+    
     init() {
         fallingShape = nil
         nextShape = nil
         blockArray = Array2D<Block>(columns: NumColumns, rows: NumRows)
+        let storedhs = defaults.integer(forKey: "HIGH_SCORE")
+        if storedhs != nil{
+            highscore = storedhs
+        }
+        
+
     }
     
     func beginGame() {
@@ -115,6 +124,7 @@ class Swiftris {
     
     func endGame() {
         highscore = max(highscore, score)
+        UserDefaults.standard.set(highscore, forKey: "HIGH_SCORE")
         score = 0
         level = 1
         delegate?.gameDidEnd(swiftris: self)
