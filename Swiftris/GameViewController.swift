@@ -38,6 +38,16 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
         
         swiftris.beginGame()
         
+        // Single Tap
+        let singleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap))
+        singleTap.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(singleTap)
+        
+        // Double Tap
+        let doubleTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
+        doubleTap.numberOfTapsRequired = 2
+        self.view.addGestureRecognizer(doubleTap)
+        
         //Present the scene.
         skView.presentScene(scene)
         
@@ -66,9 +76,16 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
             panPointReference = currentPoint
         }
     }
-    @IBAction func didTap(_ sender: UITapGestureRecognizer) {
+    
+    func handleSingleTap(sender: AnyObject?) {
         swiftris.rotateShape()
     }
+    func handleDoubleTap(sender: AnyObject?) {
+        scene.toggleTicking()
+    }
+//    @IBAction func didTap(_ sender: UITapGestureRecognizer) {
+//        swiftris.rotateShape()
+//    }
     
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true

@@ -25,6 +25,7 @@ class GameScene: SKScene {
     var tick:(() -> ())?
     var tickLengthMillis = TickLengthLevelOne
     var lastTick:NSDate?
+    var isGamePaused = false
     
     var textureCache = Dictionary<String, SKTexture>()
     
@@ -85,6 +86,17 @@ class GameScene: SKScene {
     
     func stopTicking(){
         lastTick = nil
+    }
+    
+    func toggleTicking(){
+        if isGamePaused {
+            lastTick = NSDate()
+            isGamePaused = false
+        }
+        else {
+            lastTick = nil
+            isGamePaused = true
+        }
     }
     
     func pointForColumn(column:Int, row:Int) -> CGPoint {
