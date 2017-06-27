@@ -15,7 +15,6 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     var scene: GameScene!
     var swiftris:Swiftris!
     
-    @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var levelLabel: UILabel!
     var panPointReference:CGPoint?
     
@@ -107,7 +106,6 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
     func gameDidBegin(swiftris: Swiftris) {
         
         levelLabel.text = "\(swiftris.level)"
-        scoreLabel.text = "\(swiftris.score)"
         scene.tickLengthMillis = TickLengthLevelOne
         
         // The following is false when restarting a new game
@@ -155,7 +153,7 @@ class GameViewController: UIViewController, SwiftrisDelegate, UIGestureRecognize
 
         let removedLines = swiftris.removeCompletedLines()
         if removedLines.linesRemoved.count > 0 {
-            self.scoreLabel.text = "\(swiftris.score)"
+
             scene.animateCollapsingLines(linesToRemove: removedLines.linesRemoved, fallenBlocks:removedLines.fallenBlocks) {
 
                 self.gameShapeDidLand(swiftris: swiftris)

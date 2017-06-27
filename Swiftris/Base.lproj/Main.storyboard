@@ -46,7 +46,7 @@
                                 </subviews>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ax8-kN-XAK">
-                                <rect key="frame" x="224" y="275" width="84" height="100"/>
+                                <rect key="frame" x="224" y="220" width="84" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="whitebg" translatesAutoresizingMaskIntoConstraints="NO" id="pH1-RE-EPo">
@@ -80,7 +80,6 @@
                     </view>
                     <connections>
                         <outlet property="levelLabel" destination="z44-yi-PmG" id="dBb-B3-I10"/>
-                        <outlet property="scoreLabel" destination="o77-Nh-2iw" id="BH4-QM-KWB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
